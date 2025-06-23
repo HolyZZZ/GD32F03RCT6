@@ -366,6 +366,6 @@ __user_initial_stackheap PROC
                      
                  ALIGN
 
-                 ENDIF
+                 .ENDIF
 
-                 END
+                 .END

@@ -10,15 +10,15 @@
 #include "gd32f10x.h"
 #include "gd32f10x_libopt.h"
 #include "systick.h"
-uint8_t transmitter_buffer[] = "HELLOWORLD";//定义发送数组
-uint8_t receiver_buffer[10];//定义接收数组
-#define ARRAYNUM(arr_nanme)      (uint32_t)(sizeof(arr_nanme) / sizeof(*(arr_nanme)))
-#define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)//计算大小
-uint8_t transfersize = TRANSMIT_SIZE;
-uint8_t receivesize = 10;
-__IO uint8_t txcount = 0; 
-__IO uint16_t rxcount = 0; 
-
+//uint8_t transmitter_buffer[] = "HELLOWORLD";//定义发送数组
+//uint8_t receiver_buffer[10];//定义接收数组
+//#define ARRAYNUM(arr_nanme)      (uint32_t)(sizeof(arr_nanme) / sizeof(*(arr_nanme)))
+//#define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)//计算大小
+//uint8_t transfersize = TRANSMIT_SIZE;
+//uint8_t receivesize = 10;
+//__IO uint8_t txcount = 0; 
+//__IO uint16_t rxcount = 0; 
+#if 0
 //USART0初始化，使用PB6(TX),PB7(RX)脚，9600波特率，无校验，8位数据，1位停止
 void gd_eval_com_init(void)
 {
@@ -45,6 +45,7 @@ void gd_eval_com_init(void)
     usart_enable(USART0);//使能USART0
 		
 }
+
 int main(void)
 {
 	rcu_ahb_clock_config(RCU_AHB_CKSYS_DIV1);//AHB主频是1分频
@@ -69,5 +70,14 @@ int main(void)
 				 usart_interrupt_enable(USART0, USART_INT_RBNE);//接收中断打开
 			}
     }
+
+}
+#endif
+
+int main(void) {
+    printf("ok");
+    while(1) {
+      printf("ok");
+  }
 
 }
