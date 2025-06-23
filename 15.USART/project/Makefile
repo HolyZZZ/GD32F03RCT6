@@ -1,13 +1,4 @@
-# Makefile for GD32F103RC USART project
-
-# 修复中文乱码问题 (Windows)
-ifeq ($(OS),Windows_NT)
-    # 设置控制台编码为UTF-8
-    CMD_PREFIX = chcp 65001 > nul &
-else
-    # Linux/macOS不需要特殊处理
-    CMD_PREFIX = 
-endif
+# Makefile for GD32F103RC USART project (Windows Optimized)
 
 # 工具链设置
 PREFIX = arm-none-eabi-
@@ -15,10 +6,9 @@ CC = $(PREFIX)gcc
 AS = $(PREFIX)gcc -x assembler-with-cpp
 CP = $(PREFIX)objcopy
 SZ = $(PREFIX)size
-AR = $(PREFIX)ar
 
 # 项目名称
-TARGET = usart_communication
+TARGET = app
 
 # 定义目录
 BUILD_DIR = build
@@ -43,18 +33,21 @@ INCLUDES = \
 -I$(LIB_DIR)/Include \
 -I$(USER_DIR)
 
-# 编译器标志
+# C编译器标志
 CFLAGS = $(DEFS) $(INCLUDES) $(DEBUG) $(OPT) \
 -mcpu=cortex-m3 -mthumb \
 -ffunction-sections -fdata-sections -Wall -fno-strict-aliasing \
--fexec-charset=GBK \
 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"
+
+# 汇编器标志
+ASFLAGS = -mcpu=cortex-m3 -mthumb -g
 
 # 链接器标志
 LDFLAGS = -mcpu=cortex-m3 -mthumb \
--specs=nano.specs -specs=nosys.specs \
--T$(LDSCRIPT) \
--Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+	-specs=nano.specs -specs=nosys.specs \
+	-T$(LDSCRIPT) \
+	-Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections \
+	-Wl,--print-memory-usage
 
 # 链接脚本
 LDSCRIPT = gd32f10x_flash.ld
@@ -64,34 +57,15 @@ C_SOURCES = \
 $(USER_DIR)/main.c \
 $(USER_DIR)/gd32f10x_it.c \
 $(USER_DIR)/systick.c \
+$(USER_DIR)/syscalls.c \
 $(CMSIS_DIR)/system_gd32f10x.c \
-$(LIB_DIR)/Source/gd32f10x_adc.c \
-$(LIB_DIR)/Source/gd32f10x_bkp.c \
-$(LIB_DIR)/Source/gd32f10x_can.c \
-$(LIB_DIR)/Source/gd32f10x_crc.c \
-$(LIB_DIR)/Source/gd32f10x_dac.c \
-$(LIB_DIR)/Source/gd32f10x_dbg.c \
-$(LIB_DIR)/Source/gd32f10x_dma.c \
-$(LIB_DIR)/Source/gd32f10x_enet.c \
-$(LIB_DIR)/Source/gd32f10x_exmc.c \
-$(LIB_DIR)/Source/gd32f10x_exti.c \
-$(LIB_DIR)/Source/gd32f10x_fmc.c \
-$(LIB_DIR)/Source/gd32f10x_fwdgt.c \
 $(LIB_DIR)/Source/gd32f10x_gpio.c \
-$(LIB_DIR)/Source/gd32f10x_i2c.c \
-$(LIB_DIR)/Source/gd32f10x_misc.c \
-$(LIB_DIR)/Source/gd32f10x_pmu.c \
 $(LIB_DIR)/Source/gd32f10x_rcu.c \
-$(LIB_DIR)/Source/gd32f10x_rtc.c \
-$(LIB_DIR)/Source/gd32f10x_sdio.c \
-$(LIB_DIR)/Source/gd32f10x_spi.c \
-$(LIB_DIR)/Source/gd32f10x_timer.c \
 $(LIB_DIR)/Source/gd32f10x_usart.c \
-$(LIB_DIR)/Source/gd32f10x_wwdgt.c
+$(LIB_DIR)/Source/gd32f10x_misc.c
 
-# 汇编源文件
-ASM_SOURCES = \
-$(STARTUP_DIR)/startup_gd32f10x_hd.s
+# 汇编源文件 (保留原始文件名)
+ASM_SOURCES = $(STARTUP_DIR)/startup_gd32f10x_hd.s
 
 # 目标文件列表
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
@@ -101,58 +75,63 @@ vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
 # 默认目标
 all: $(BUILD_DIR) $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
-	$(CMD_PREFIX) echo "编译成功！"
-	$(CMD_PREFIX) mkdir -p $(OUTPUT_DIR)
-	$(CMD_PREFIX) cp -f $(BUILD_DIR)/$(TARGET).bin $(OUTPUT_DIR)/
-	$(CMD_PREFIX) cp -f $(BUILD_DIR)/$(TARGET).hex $(OUTPUT_DIR)/
-	$(CMD_PREFIX) cp -f $(BUILD_DIR)/$(TARGET).map $(OUTPUT_DIR)/
-	$(CMD_PREFIX) echo "所有文件已复制到 $(OUTPUT_DIR) 目录"
+	@echo ===== BUILD SUCCESS =====
+	
+	@echo Creating output directory...
+	@if not exist "$(OUTPUT_DIR)" mkdir "$(OUTPUT_DIR)"
+	
+	@echo Copying output files...
+	@copy /Y "$(BUILD_DIR)\$(TARGET).bin" "$(OUTPUT_DIR)\" > nul
+	@copy /Y "$(BUILD_DIR)\$(TARGET).hex" "$(OUTPUT_DIR)\" > nul
+	@if exist "$(BUILD_DIR)\$(TARGET).map" copy /Y "$(BUILD_DIR)\$(TARGET).map" "$(OUTPUT_DIR)\" > nul
+	
+	@echo Output files copied to: $(OUTPUT_DIR)
 
 # 创建构建目录
 $(BUILD_DIR):
-	$(CMD_PREFIX) mkdir -p $@
-	$(CMD_PREFIX) echo "创建构建目录: $@"
+	@echo Creating build directory...
+	@mkdir "$(BUILD_DIR)"
 
 # 编译C源文件
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
-	$(CMD_PREFIX) echo "编译: $<"
-	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@echo Compiling: $<
+	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 # 编译汇编源文件
-$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
-	$(CMD_PREFIX) echo "编译汇编: $<"
-	$(AS) -c $(CFLAGS) $< -o $@
+$(BUILD_DIR)/%.o: $(STARTUP_DIR)/%.s Makefile | $(BUILD_DIR)
+	@echo Assembling: $<
+	@$(AS) -c $(ASFLAGS) $< -o $@
 
 # 链接
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
-	$(CMD_PREFIX) echo "链接目标文件..."
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
-	$(CMD_PREFIX) $(SZ) $@
+	@echo Linking objects...
+	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	@$(SZ) $@
 
 # 创建hex文件
 $(BUILD_DIR)/$(TARGET).hex: $(BUILD_DIR)/$(TARGET).elf
-	$(CMD_PREFIX) echo "生成HEX文件..."
-	$(CP) -O ihex $< $@
+	@echo Creating HEX file...
+	@$(CP) -O ihex $< $@
 
 # 创建bin文件
 $(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
-	$(CMD_PREFIX) echo "生成BIN文件..."
-	$(CP) -O binary -S $< $@
+	@echo Creating BIN file...
+	@$(CP) -O binary -S $< $@
 
 # 清理
 clean:
-	$(CMD_PREFIX) echo "清理构建文件..."
-	rm -rf $(BUILD_DIR)
-	$(CMD_PREFIX) echo "清理完成！"
+	@echo Cleaning build files...
+	@if exist "$(BUILD_DIR)" rmdir /S /Q "$(BUILD_DIR)"
+	@echo Clean completed!
 
-# 显示帮助信息
+# 显示帮助
 help:
-	$(CMD_PREFIX) echo "GD32F103RC USART项目编译脚本"
-	$(CMD_PREFIX) echo "用法: make [目标]"
-	$(CMD_PREFIX) echo "目标:"
-	$(CMD_PREFIX) echo "  all     - 编译项目（默认）"
-	$(CMD_PREFIX) echo "  clean   - 清理编译文件"
-	$(CMD_PREFIX) echo "  help    - 显示此帮助信息"
+	@echo "GD32F103RC USART Project Build Script"
+	@echo "Usage: make [target]"
+	@echo "Targets:"
+	@echo "  all     - Build project (default)"
+	@echo "  clean   - Clean build files"
+	@echo "  help    - Show this help"
 
 # 依赖
 -include $(wildcard $(BUILD_DIR)/*.d)

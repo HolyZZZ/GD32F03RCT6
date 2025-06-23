@@ -171,3 +171,13 @@ void USART0_IRQHandler(void)
         }
     }
 }
+// 添加在文件末尾
+void LVD_IRQHandler(void)
+{
+    // 低电压检测中断处理
+}
+
+void DMA1_Channel3_4_IRQHandler(void)
+{
+    // DMA1通道3和4中断处理
+}

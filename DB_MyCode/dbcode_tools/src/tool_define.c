@@ -131,7 +131,7 @@ void tool_getstr_form_character(char *szInput, \
 	}
 	*p = '\0';
 }
-void tool_malloc(uint32_t size) {
+void* tool_malloc(uint32_t size) {
     return (void*)malloc(size);
 }
 void tool_free(void* ptr) {
