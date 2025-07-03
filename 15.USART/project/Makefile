@@ -17,6 +17,11 @@ CMSIS_DIR = ../CMSIS
 LIB_DIR = ../Library
 USER_DIR = ../User
 STARTUP_DIR = ../Startup/GNU
+DBCODE_APP_DIR = ../../DB_MyCode/dbcode_app
+DBCODE_COM_DIR = ../../DB_MyCode/dbcode_component
+DBCODE_KERNEL_DIR = ../../DB_MyCode/dbcode_kernel
+DBCODE_TOOL_DIR = ../../DB_MyCode/dbcode_tool
+DBCODE_LIB_DIR = ../../DB_MyCode/dbcode_lib
 
 # 优化级别
 OPT = -O2
@@ -31,7 +36,12 @@ DEFS = -DGD32F10X_HD -D__FPU_PRESENT
 INCLUDES = \
 -I$(CMSIS_DIR) \
 -I$(LIB_DIR)/Include \
--I$(USER_DIR)
+-I$(USER_DIR) \
+-I$(DBCODE_APP_DIR)/inc \
+-I$(DBCODE_COM_DIR)/inc \
+-I$(DBCODE_KERNEL_DIR)/inc \
+-I$(DBCODE_TOOL_DIR)/inc \
+-I$(DBCODE_LIB_DIR)
 
 # C编译器标志
 CFLAGS = $(DEFS) $(INCLUDES) $(DEBUG) $(OPT) \
@@ -52,7 +62,7 @@ LDFLAGS = -mcpu=cortex-m3 -mthumb \
 # 链接脚本
 LDSCRIPT = gd32f10x_flash.ld
 
-# 源文件
+# 源文件 - 使用wildcard展开通配符
 C_SOURCES = \
 $(USER_DIR)/main.c \
 $(USER_DIR)/gd32f10x_it.c \
@@ -62,9 +72,13 @@ $(CMSIS_DIR)/system_gd32f10x.c \
 $(LIB_DIR)/Source/gd32f10x_gpio.c \
 $(LIB_DIR)/Source/gd32f10x_rcu.c \
 $(LIB_DIR)/Source/gd32f10x_usart.c \
-$(LIB_DIR)/Source/gd32f10x_misc.c
+$(LIB_DIR)/Source/gd32f10x_misc.c \
+$(wildcard $(DBCODE_APP_DIR)/src/*.c) \
+$(wildcard $(DBCODE_COM_DIR)/src/*.c) \
+$(wildcard $(DBCODE_KERNEL_DIR)/src/*.c) \
+$(wildcard $(DBCODE_TOOL_DIR)/src/*.c)
 
-# 汇编源文件 (保留原始文件名)
+# 汇编源文件
 ASM_SOURCES = $(STARTUP_DIR)/startup_gd32f10x_hd.s
 
 # 目标文件列表
@@ -97,8 +111,8 @@ $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	@echo Compiling: $<
 	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
-# 编译汇编源文件
-$(BUILD_DIR)/%.o: $(STARTUP_DIR)/%.s Makefile | $(BUILD_DIR)
+# 编译汇编源文件（通用规则）
+$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	@echo Assembling: $<
 	@$(AS) -c $(ASFLAGS) $< -o $@
 

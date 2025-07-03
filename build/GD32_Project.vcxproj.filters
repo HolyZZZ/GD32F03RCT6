@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\CMSIS\system_gd32f10x.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_adc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_bkp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_can.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_crc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_dac.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_dbg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_dma.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_enet.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_exmc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_exti.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_fmc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_fwdgt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_gpio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_i2c.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_pmu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_rcu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_rtc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_sdio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_spi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_usart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\Library\Source\gd32f10x_wwdgt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\User\gd32f10x_it.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\User\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\User\syscalls.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\15.USART\User\systick.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_app\src\app_log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_app\src\app_transport.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_component\src\com_event.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_component\src\com_timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_kernel\src\kernel_flash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_kernel\src\kernel_gpio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_kernel\src\kernel_usart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_tools\src\tool_define.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_tools\src\tool_fifo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitCode\GD32F03RCT6\DB_MyCode\dbcode_tools\src\tool_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\GitCode\GD32F03RCT6\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{24E32E03-7886-3362-88EE-30B4B19ABB85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

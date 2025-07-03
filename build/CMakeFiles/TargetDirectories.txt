@@ -1,0 +1,3 @@
+D:/GitCode/GD32F03RCT6/build/CMakeFiles/GD32_Project.dir
+D:/GitCode/GD32F03RCT6/build/CMakeFiles/ALL_BUILD.dir
+D:/GitCode/GD32F03RCT6/build/CMakeFiles/ZERO_CHECK.dir

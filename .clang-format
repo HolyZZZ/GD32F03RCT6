@@ -1,0 +1,44 @@
+# 基于Google的代码风格
+BasedOnStyle: Google
+
+# 缩进宽度为4个空格
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# 列限制为100个字符
+ColumnLimit: 100
+
+# 注释前的空格数量
+SpacesBeforeTrailingComments: 2
+
+# 指针和引用的对齐方式
+PointerAlignment: Right
+
+# 允许短的if语句保持在一行
+AllowShortIfStatementsOnASingleLine: false
+
+# 允许短的循环保持在一行
+AllowShortLoopsOnASingleLine: false
+
+# 允许短的函数保持在一行
+AllowShortFunctionsOnASingleLine: Empty
+
+# 大括号换行风格
+BreakBeforeBraces: Attach
+
+# 在赋值操作符前换行
+BreakBeforeInheritanceComma: false
+
+# 构造函数初始化列表格式
+BreakConstructorInitializersBeforeComma: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# 在逻辑与操作符前换行
+BreakBeforeBinaryOperators: None
+
+# 保持case标签和switch对齐
+IndentCaseLabels: true
+
+# 命名空间内的内容不缩进
+NamespaceIndentation: None

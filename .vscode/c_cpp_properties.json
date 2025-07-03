@@ -1,0 +1,40 @@
+{
+  "configurations": [
+    {
+      "name": "GD32",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/15.USART/CMSIS",
+        "${workspaceFolder}/15.USART/Library/Include",
+        "${workspaceFolder}/15.USART/User",
+        "${workspaceFolder}/DB_MyCode/dbcode_app/inc",
+        "${workspaceFolder}/DB_MyCode/dbcode_component/inc",
+        "${workspaceFolder}/DB_MyCode/dbcode_kernel/inc",
+        "${workspaceFolder}/DB_MyCode/dbcode_tools/inc",
+        "${workspaceFolder}/DB_MyCode/dbcode_lib"
+      ],
+      "defines": [
+        "GD32F10X_HD",
+        "__FPU_PRESENT"
+      ],
+      "compilerPath": "arm-none-eabi-gcc",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-arm",
+      "browse": {
+        "path": [
+          "${workspaceFolder}/15.USART/CMSIS",
+          "${workspaceFolder}/15.USART/Library/Include",
+          "${workspaceFolder}/15.USART/User",
+          "${workspaceFolder}/DB_MyCode/dbcode_app/inc",
+          "${workspaceFolder}/DB_MyCode/dbcode_component/inc",
+          "${workspaceFolder}/DB_MyCode/dbcode_kernel/inc",
+          "${workspaceFolder}/DB_MyCode/dbcode_tools/inc",
+          "${workspaceFolder}/DB_MyCode/dbcode_lib"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
+    }
+  ],
+  "version": 4
+}

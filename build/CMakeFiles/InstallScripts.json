@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/GitCode/GD32F03RCT6/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

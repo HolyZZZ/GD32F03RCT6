@@ -20,36 +20,35 @@ if not exist CMakeLists.txt (
     echo 创建CMakeLists.txt文件...
     
     (
-        echo cmake_minimum_required(VERSION 3.10
-        echo project(GD32_Project C
+        echo cmake_minimum_required(VERSION 3.10^)
+        echo project(GD32_Project C^)
         echo.
         echo set(CMAKE_EXPORT_COMPILE_COMMANDS ON^)
         echo.
         echo include_directories^(
-        echo     ../CMSIS
-        echo     ../Library/Include
-        echo     ../User
-        echo     ../../DB_MyCode/dbcode_app/inc
-        echo     ../../DB_MyCode/dbcode_component/inc
-        echo     ../../DB_MyCode/dbcode_kernel/inc
-        echo     ../../DB_MyCode/dbcode_tool/inc
-        echo     ../../DB_MyCode/dbcode_lib
+        echo     ../15.USART/CMSIS
+        echo     ../15.USART/Library/Include
+        echo     ../15.USART/User
+        echo     ../DB_MyCode/dbcode_app/inc
+        echo     ../DB_MyCode/dbcode_component/inc
+        echo     ../DB_MyCode/dbcode_kernel/inc
+        echo     ../DB_MyCode/dbcode_tool/inc
+        echo     ../DB_MyCode/dbcode_lib
         echo ^)
         echo.
         echo file(GLOB SOURCES
-        echo     "../User/*.c"
-        echo     "../CMSIS/*.c"
-        echo     "../Library/Source/*.c"
-        echo     "../../DB_MyCode/dbcode_app/src/*.c"
-        echo     "../../DB_MyCode/dbcode_component/src/*.c"
-        echo     "../../DB_MyCode/dbcode_kernel/src/*.c"
-        echo     "../../DB_MyCode/dbcode_tool/src/*.c"
+        echo     "../15.USART/User/*.c"
+        echo     "../15.USART/CMSIS/*.c"
+        echo     "../15.USART/Library/Source/*.c"
+        echo     "../DB_MyCode/dbcode_app/src/*.c"
+        echo     "../DB_MyCode/dbcode_component/src/*.c"
+        echo     "../DB_MyCode/dbcode_kernel/src/*.c"
+        echo     "../DB_MyCode/dbcode_tool/src/*.c"
         echo ^)
         echo.
-        echo add_executable($$<PROJECT_NAME> $$<SOURCES>^)
+        echo add_executable($${PROJECT_NAME} $${SOURCES}^)
     ) > CMakeLists.txt
 )
-
 :: ===================================================
 :: 步骤2: 生成编译数据库 (compile_commands.json)
 :: ===================================================

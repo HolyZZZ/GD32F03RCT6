@@ -10,10 +10,10 @@
 #include "gd32f10x.h"
 #include "gd32f10x_libopt.h"
 #include "systick.h"
-uint8_t transmitter_buffer[] = "HELLOWORLD";//定义发送数组
-uint8_t receiver_buffer[10];//定义接收数组
+uint8_t transmitter_buffer[] = "HELLOWORLD";  //定义发送数组
+uint8_t receiver_buffer[10];  //定义接收数组
 #define ARRAYNUM(arr_nanme)      (uint32_t)(sizeof(arr_nanme) / sizeof(*(arr_nanme)))
-#define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)//计算大小
+#define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)  //计算大小
 uint8_t transfersize = TRANSMIT_SIZE;
 uint8_t receivesize = 10;
 __IO uint8_t txcount = 0; 
@@ -23,15 +23,15 @@ __IO uint16_t rxcount = 0;
 void gd_eval_com_init(void)
 {
     /* enable GPIO clock */
-    rcu_periph_clock_enable(RCU_GPIOB);//使能GPIOB时钟
+    rcu_periph_clock_enable(RCU_GPIOB);  //使能GPIOB时钟
 
     /* enable USART clock */
-    rcu_periph_clock_enable(RCU_USART0);//使能USART0时钟
-    gpio_pin_remap_config(GPIO_USART0_REMAP, ENABLE);//PB6,PB7需要重映射
-    gpio_init(GPIOB, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_6);//PB6输出
+    rcu_periph_clock_enable(RCU_USART0);  //使能USART0时钟
+    gpio_pin_remap_config(GPIO_USART0_REMAP, ENABLE);  //PB6,PB7需要重映射
+    gpio_init(GPIOB, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ,GPIO_PIN_6);  //PB6输出
 
     /* configure USART Rx as alternate function push-pull */
-    gpio_init(GPIOB, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ,GPIO_PIN_7);//PB7输入
+    gpio_init(GPIOB, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ,GPIO_PIN_7);  //PB7输入
     /* USART configure */
     usart_deinit(USART0);
     usart_baudrate_set(USART0,9600);
@@ -42,7 +42,7 @@ void gd_eval_com_init(void)
     usart_hardware_flow_cts_config(USART0, USART_CTS_DISABLE);
     usart_transmit_config(USART0, USART_TRANSMIT_ENABLE);
     usart_receive_config(USART0, USART_RECEIVE_ENABLE);
-    usart_enable(USART0);//使能USART0
+    usart_enable(USART0);  //使能USART0
 		
 }
 

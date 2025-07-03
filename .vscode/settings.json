@@ -1,5 +1,124 @@
 {
-    "files.associations": {
-        "tool_define.h": "c"
+  "C_Cpp.intelliSenseCacheSize": 2048,
+  "C_Cpp.intelliSenseMemoryLimit": 1024,
+  "C_Cpp.autocomplete": "Default",
+  "C_Cpp.errorSquiggles": "Enabled",
+  "C_Cpp.intelliSenseEngine": "Default",
+  "C_Cpp.configurationSelector": "GD32",
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "files.exclude": {
+    "**/build": true,
+    "**/out": true,
+    "**/*.o": true,
+    "**/*.d": true
+  },
+  "search.exclude": {
+    "**/build": true,
+    "**/out": true
+  },
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/15.USART/CMSIS",
+    "${workspaceFolder}/15.USART/Library/Include",
+    "${workspaceFolder}/15.USART/User",
+    "${workspaceFolder}/DB_MyCode/dbcode_app/inc",
+    "${workspaceFolder}/DB_MyCode/dbcode_component/inc",
+    "${workspaceFolder}/DB_MyCode/dbcode_kernel/inc",
+    "${workspaceFolder}/DB_MyCode/dbcode_tools/inc",
+    "${workspaceFolder}/DB_MyCode/dbcode_lib"
+  ],
+  "C_Cpp.default.defines": [
+    "GD32F10X_HD",
+    "__FPU_PRESENT"
+  ],
+  "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",
+  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.intelliSenseMode": "gcc-arm",
+  "C_Cpp.enhancedColorization": "Default",
+  "editor.semanticHighlighting.enabled": true,
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "editor.tokenColorCustomizations": {
+    "[Default Dark+]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "entity.name.function",
+            "support.function"
+          ],
+          "settings": {
+            "foreground": "#505bdb"
+          }
+        },
+        {
+          "scope": [
+            "variable",
+            "variable.parameter"
+          ],
+          "settings": {
+            "foreground": "#c8d6de"
+          }
+        },
+        {
+          "scope": [
+            "entity.name.type",
+            "storage.type"
+          ],
+          "settings": {
+            "foreground": "#7562d2"
+          }
+        },
+        {
+          "scope": [
+            "keyword",
+            "keyword.control"
+          ],
+          "settings": {
+            "foreground": "#569CD6"
+          }
+        },
+        {
+          "scope": [
+            "constant",
+            "constant.numeric"
+          ],
+          "settings": {
+            "foreground": "#b5288b"
+          }
+        },
+        {
+          "scope": [
+            "string"
+          ],
+          "settings": {
+            "foreground": "#2ad66e"
+          }
+        },
+        {
+          "scope": [
+            "comment"
+          ],
+          "settings": {
+            "foreground": "#6A9955"
+          }
+        },
+        {
+          "scope": [
+            "entity.name.macro",
+            "meta.preprocessor"
+          ],
+          "settings": {
+            "foreground": "#C586C0"
+          }
+        }
+      ]
     }
+  },
+  "editor.formatOnSave": true,
+  "C_Cpp.clang_format_style": {
+    "BasedOnStyle": "Google",
+    "IndentWidth": 4,
+    "TabWidth": 4,
+    "UseTab": "Never",
+    "ColumnLimit": 100,
+    "SpacesBeforeTrailingComments": 2
+  }
 }

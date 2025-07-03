@@ -1,4 +1,24 @@
 #ifndef KERNEL_USART_H
 #define KERNEL_USART_H
 
+
+#include "lib_gd32f103.h"
+
+#define USART0_RECV_MAXLEN 1024
+
+
+#define USART0_TX_PIN GPIO_PIN_6
+#define USART0_RX_PIN GPIO_PIN_7
+#define USART0_GPIO GPIOB
+
+#define USART0_GPIORCC  RCU_GPIOB
+#define USART0_RCC RCU_USART0
+
+#define USART_BAUD   115200
+
+
+
+
+
+
 #endif
